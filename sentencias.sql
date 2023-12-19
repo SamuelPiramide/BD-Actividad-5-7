@@ -63,6 +63,7 @@ CREATE TABLE Entrenamiento(
 	CONSTRAINT pk_Entrenamiento PRIMARY KEY (codigo)
 );
 
+
 CREATE TABLE Ejercicio(
 	nombre varchar(50),
 	numero_de_series int(3) NOT NULL,
@@ -70,15 +71,31 @@ CREATE TABLE Ejercicio(
 	CONSTRAINT pk_Ejercicio PRIMARY KEY (nombre)
 );
 
+
 CREATE TABLE Entrenamiento_Ejercicio(
 	id int AUTO_INCREMENT,
 	codigoEntrenamiento int(10) NOT NULL,
 	nombreEjercicio varchar(50) NOT NULL,
 	CONSTRAINT pk_Entrenamiento_Ejercicio PRIMARY KEY (id),
+	CONSTRAINT fk_Entrenamiento_Entrenamiento_Ejercicio FOREIGN KEY (codigoEntrenamiento) REFERENCES Entrenamiento (codigo),
+	CONSTRAINT fk_Ejercicio_Entrenamiento_Ejercicio FOREIGN KEY (nombreEjercicio) REFERENCES Ejercicio (nombre)
 );
 
 
+CREATE TABLE Material(
+	nombre varchar(50),
+	CONSTRAINT pk_Material PRIMARY KEY (nombre)
+);
 
+
+CREATE TABLE Ejercicio_Material(
+	id int AUTO_INCREMENT,
+	nombreEjercicio varchar(50) NOT NULL,
+	nombreMaterial varchar(50) NOT NULL,
+	CONSTRAINT pk_Ejercicio_Material PRIMARY KEY (id),
+	CONSTRAINT fk_Ejercicio_Ejercicio_Material FOREIGN KEY (nombreEjercicio) REFERENCES Ejercicio (nombre),
+	CONSTRAINT fk_Material_Ejercicio_Material FOREIGN KEY (nombreMaterial) REFERENCES Material (nombre)
+);
 
 
 	
