@@ -46,8 +46,8 @@ CREATE TABLE Planificacion(
 
 CREATE TABLE Entrenador_Cliente_Planificacion(
 	id int AUTO_INCREMENT,
-	idEntrenador varchar(9) NOT NULL,
-	idCliente varchar(9) NOT NULL,
+	idEntrenador int NOT NULL,
+	idCliente int NOT NULL,
 	codigoPlanificacion int(10) NOT NULL,
 	CONSTRAINT pk_Entrenador_Cliente_Planificacion PRIMARY KEY (id),
 	CONSTRAINT fk_Entrenador_Entrenador_Cliente_Planificacion FOREIGN KEY (idEntrenador) REFERENCES Entrenador (id),
